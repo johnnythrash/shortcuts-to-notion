@@ -34,6 +34,10 @@ export default async function handler(req, res) {
       "multi_select":
 				notionTypes
     },
+		"Tags": {
+    "type": "multi_select",
+    "multi_select": [{ "name": "inbox" }]
+  },
     "Date": {
       "type": "date",
       "date": { "start": dateStr }
