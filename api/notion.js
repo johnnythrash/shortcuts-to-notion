@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, focusArea, type, tags } = req.body;
+  const { task, focusArea, type } = req.body;
   const notionTypes =
     type && type.length > 0 ? type.map((item) => ({ name: item })) : [];
   const dateStr = new Date().toISOString().split("T")[0];
@@ -19,12 +19,12 @@ export default async function handler(req, res) {
     "database_id": process.env.NOTION_DATABASE_ID
   },
   "properties": {
-    "Name": {
+    "Task": {
       "type": "title",
       "title": [
         {
           "type": "text",
-          "text": { "content": name}
+          "text": { "content": task}
         }
       ]
     },
