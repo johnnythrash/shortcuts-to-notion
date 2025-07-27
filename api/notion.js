@@ -8,7 +8,15 @@ export default async function handler(req, res) {
 
   let data;
   if (req.body[""]) {
-    data = JSON.parse(req.body[""]);
+    let jsonString = req.body[""];
+    jsonString = jsonString
+      .replace(/\n/g, " ")
+      .replace(/\r/g, " ")
+      .replace(/\t/g, " ")
+      .replace(/\\/g, "\\\\")
+      .replace(/\s+/g, " ")
+      .trim();
+    data = JSON.parse(jsonString);
   } else {
     data = req.body;
   }
