@@ -6,7 +6,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { task, focusArea, type } = req.body;
+  let data;
+  if (req.body[""]) {
+    data = JSON.parse(req.body[""]);
+  } else {
+    data = req.body;
+  }
+
+  const { task, focusArea, type } = data;
   const notionTypes =
     type && type.length > 0 ? type.map((item) => ({ name: item })) : [];
   const dateStr = new Date().toISOString().split("T")[0];
