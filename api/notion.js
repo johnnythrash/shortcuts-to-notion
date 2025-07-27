@@ -20,29 +20,23 @@ export default async function handler(req, res) {
   },
   "properties": {
     "Task": {
-      "type": "title",
       "title": [
         {
-          "type": "text",
           "text": { "content": task}
         }
       ]
     },
     "Focus Area": {
-      "type": "select",
       "select": { "name": focusArea }
     },
     "Type": {
-      "type": "multi_select",
       "multi_select":
 				notionTypes
     },
 		"Tags": {
-    "type": "multi_select",
     "multi_select": [{ "name": "inbox" }]
   },
     "Date": {
-      "type": "date",
       "date": { "start": dateStr }
     }
   }
